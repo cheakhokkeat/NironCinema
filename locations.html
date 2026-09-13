@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cinema Locations | NironCinema</title>
+    <link href="./src/dist/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+  </head>
+
+  <body
+    class="flex min-h-screen flex-col bg-nironDark pb-20 font-sans text-white antialiased md:pb-0">
+    <header
+      data-smart-header
+      class="sticky top-0 z-50 border-b border-nironBlue/15 bg-nironDark/80 shadow-[0_8px_30px_rgba(0,0,0,.15)] backdrop-blur-xl transition-transform duration-300 ease-out">
+      <div
+        class="cinema-header-row mx-auto flex h-18 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <a href="./index.html" class="cinema-brand flex items-center gap-2"
+          ><span
+            class="flex size-8 items-center justify-center rounded bg-linear-to-tr from-nironBlue to-nironPink font-cyber text-xl font-bold text-black shadow-[0_0_15px_rgba(0,240,255,.4)]"
+            >N</span
+          ><span
+            class="font-cyber text-lg font-extrabold tracking-wider sm:text-xl"
+            >NIRON<span class="text-nironBlue">CINEMA</span></span
+          ></a
+        >
+        <label
+          class="cinema-header-search relative mx-auto hidden min-w-0 sm:block"
+          ><input
+            id="locationSearch"
+            type="search"
+            aria-label="Search cinema or city"
+            placeholder="Search cinema or city"
+            class="w-full rounded-full border border-gray-700 bg-gray-900/70 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-nironBlue focus:ring-2 focus:ring-nironBlue/10" /><i
+            class="fa-solid fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xs text-gray-500"
+            aria-hidden="true"></i
+        ></label>
+        <a
+          href="./index.html"
+          aria-label="Back to home"
+          title="Back to home"
+          class="ml-auto flex size-10 shrink-0 items-center justify-center rounded-full border border-nironBlue text-nironBlue transition hover:bg-nironBlue hover:text-nironDark"
+          ><i class="fa-solid fa-house"></i
+        ></a>
+      </div>
+      <div
+        class="hidden border-t border-gray-800/80 md:flex md:justify-center md:py-2">
+        <nav
+          class="flex items-center gap-1 rounded-full border border-gray-800 bg-gray-900/60 p-1 text-xs font-semibold text-gray-400">
+          <a
+            href="./index.html"
+            class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"
+            ><i class="fa-solid fa-house mr-2"></i>Home</a
+          ><a
+            href="./index.html#movies"
+            class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"
+            ><i class="fa-solid fa-film mr-2"></i>Movies</a
+          ><a
+            href="./index.html#ads-container"
+            class="rounded-full px-4 py-2 transition hover:bg-nironPink/10 hover:text-nironPink"
+            ><i class="fa-solid fa-tags mr-2"></i>Offers</a
+          ><a
+            href="./locations.html"
+            class="rounded-full bg-nironBlue/15 px-4 py-2 text-nironBlue"
+            ><i class="fa-solid fa-location-dot mr-2"></i>Locations</a
+          ><a
+            href="./about.html"
+            class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"
+            ><i class="fa-solid fa-circle-info mr-2"></i>About Us</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <section
+        class="relative overflow-hidden border-b border-gray-800 bg-gray-900/40">
+        <div
+          class="absolute left-1/2 top-0 size-80 -translate-x-1/2 rounded-full bg-nironBlue/10 blur-3xl"></div>
+        <div
+          class="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 md:py-20 lg:px-8">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-nironPink/40 bg-nironPink/10 px-3 py-1 text-xs font-semibold text-nironPink"
+            ><i class="fa-solid fa-location-crosshairs"></i>OUR CINEMAS</span
+          >
+          <h1 class="mt-4 font-cyber text-3xl font-extrabold md:text-5xl">
+            Find a cinema <span class="text-nironBlue">near you</span>
+          </h1>
+          <p class="mx-auto mt-3 max-w-xl text-sm text-gray-400 md:text-base">
+            Choose your nearest NironCinema and plan your next big-screen
+            experience.
+          </p>
+        </div>
+      </section>
+      <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div
+          class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p
+              class="text-xs font-bold uppercase tracking-[.2em] text-nironPink">
+              Explore branches
+            </p>
+            <h2 class="mt-1 font-cyber text-2xl font-bold">Cinema locations</h2>
+          </div>
+          <p id="locationCount" class="text-sm text-gray-500"></p>
+        </div>
+        <div
+          id="locations-container"
+          class="grid gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+        <div
+          id="locationEmpty"
+          class="hidden rounded-xl border border-gray-800 bg-gray-900/40 py-16 text-center">
+          <i class="fa-solid fa-location-dot text-3xl text-nironBlue"></i>
+          <h3 class="mt-3 font-bold">No cinemas found</h3>
+          <p class="mt-1 text-sm text-gray-500">
+            Try a different location search.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="border-t border-gray-800 bg-gray-950 py-6 text-center text-xs text-gray-500">
+      <p>© 2026 NironCinema. All rights reserved.</p>
+    </footer>
+    <div
+      id="mobileSearchPanel"
+      class="hidden fixed inset-x-3 bottom-24 z-40 rounded-2xl border border-nironBlue/50 bg-nironDark/80 p-2 shadow-[0_0_20px_rgba(0,240,255,0.12)] backdrop-blur-xl md:hidden">
+      <div class="relative w-full">
+        <i
+          class="fa-solid fa-magnifying-glass pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-nironBlue"
+          aria-hidden="true"></i>
+        <input
+          id="mobileLocationSearch"
+          type="search"
+          aria-label="Search cinema or city"
+          placeholder="Search cinema or city"
+          class="w-full rounded-xl border border-nironBlue/20 bg-nironBlue/5 py-2 pl-10 pr-12 text-base text-white placeholder:text-gray-400 focus:outline-none focus:border-nironBlue/60 focus:ring-2 focus:ring-nironBlue/10 transition" />
+        <button
+          id="mobileSearchClose"
+          type="button"
+          aria-label="Close search"
+          class="absolute right-0 top-0 h-full rounded-r-xl px-4 text-nironPink/90 hover:bg-nironBlue/10 hover:text-nironBlue transition">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <nav
+      data-bottom-nav
+      aria-label="Mobile navigation"
+      class="fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-2xl border border-nironBlue/15 bg-nironDark/80 p-1.5 shadow-lg backdrop-blur-xl md:hidden">
+      <a
+        href="./index.html"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400"
+        ><i class="fa-solid fa-house text-base"></i>Home</a
+      ><a
+        href="./index.html#movies"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400"
+        ><i class="fa-solid fa-film text-base"></i>Movies</a
+      ><a
+        href="./index.html#ads-container"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400"
+        ><i class="fa-solid fa-tags text-base"></i>Offers</a
+      ><a
+        href="./locations.html"
+        class="flex flex-col items-center gap-1 rounded-xl bg-nironBlue/15 py-2 text-[10px] font-semibold text-nironBlue"
+        ><i class="fa-solid fa-location-dot text-base"></i>Locations</a
+      >
+      <button
+        id="mobileSearchToggle"
+        type="button"
+        aria-controls="mobileSearchPanel"
+        aria-expanded="false"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue aria-expanded:bg-nironBlue/15 aria-expanded:text-nironBlue">
+        <i class="fa-solid fa-magnifying-glass text-base" aria-hidden="true"></i
+        >Search
+      </button>
+    </nav>
+    <script type="module" src="./src/js/auth/authModal.js"></script>
+    <script type="module" src="./src/js/pages/locations.js"></script>
+    <script type="module" src="./src/js/components/smartNavbar.js"></script>
+    <script type="module" src="./src/js/components/headerBrand.js"></script>
+  </body>
+</html>

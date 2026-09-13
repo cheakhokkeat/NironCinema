@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Sign In | NironCinema</title>
+    <link href="../src/dist/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+  </head>
+
+  <body
+    class="min-h-dvh overflow-x-hidden bg-nironDark font-sans text-white antialiased">
+    <main
+      class="relative flex min-h-dvh items-center justify-center overflow-hidden px-4 py-20">
+      <div
+        class="absolute -left-32 -top-32 size-96 rounded-full bg-nironBlue/10 blur-3xl"></div>
+      <div
+        class="absolute -bottom-32 -right-32 size-96 rounded-full bg-nironPink/10 blur-3xl"></div>
+      <a
+        href="../index.html"
+        class="absolute left-5 top-5 text-sm text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-house mr-2"></i>Back to cinema</a
+      >
+      <form
+        id="adminLogin"
+        class="relative z-10 w-full max-w-md space-y-5 rounded-xl border border-nironBlue bg-nironDark/90 p-6 shadow-2xl backdrop-blur sm:p-8">
+        <a href="../index.html" class="flex items-center justify-center gap-2"
+          ><span
+            class="flex size-10 items-center justify-center rounded bg-linear-to-tr from-nironBlue to-nironPink font-cyber text-xl font-bold text-black shadow-[0_0_15px_rgba(0,240,255,.4)]"
+            >N</span
+          ><span class="font-cyber text-xl font-extrabold tracking-wider"
+            >NIRON<span class="text-nironBlue">CINEMA</span></span
+          ></a
+        >
+        <div class="text-center">
+          <p class="text-xs font-bold uppercase tracking-[.2em] text-nironPink">
+            Secure access
+          </p>
+          <h1 class="mt-2 text-2xl font-bold">Admin Sign In</h1>
+          <p class="mt-1 text-sm text-gray-400">
+            Enter your account credentials.
+          </p>
+        </div>
+        <label class="block text-sm font-medium"
+          >Email or username
+          <div class="relative mt-1">
+            <i
+              class="fa-solid fa-user absolute left-3 top-3.5 text-sm text-gray-500"></i
+            ><input
+              id="loginId"
+              autocomplete="username"
+              required
+              class="h-11 w-full rounded-lg border border-gray-700 bg-gray-900 text-base py-2.5 pl-10 pr-3 outline-none focus:border-nironBlue focus:ring-2 focus:ring-nironBlue/20" /></div
+        ></label>
+        <label class="block text-sm font-medium"
+          >Password
+          <div class="relative mt-1">
+            <i
+              class="fa-solid fa-lock absolute left-3 top-3.5 text-sm text-gray-500"></i
+            ><input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="h-11 w-full rounded-lg border border-gray-700 bg-gray-900 text-base py-2.5 pl-10 pr-11 outline-none focus:border-nironBlue focus:ring-2 focus:ring-nironBlue/20" /><button
+              id="togglePassword"
+              type="button"
+              aria-label="Show password"
+              class="absolute right-3 top-2.5 p-1 text-gray-500 hover:text-nironBlue">
+              <i class="fa-solid fa-eye"></i>
+            </button></div
+        ></label>
+        <label class="flex items-center gap-2 text-sm text-gray-300">
+          <input
+            id="remember"
+            type="checkbox"
+            class="size-4 cursor-pointer accent-cyan-400" />
+          Remember me
+        </label>
+        <p
+          id="loginError"
+          class="hidden rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-400">
+          <i class="fa-solid fa-circle-exclamation mr-2"></i><span></span>
+        </p>
+        <button
+          class="w-full rounded-xl bg-nironPink py-2.5 font-semibold shadow-[0_0_15px_rgba(255,0,127,.4)] hover:opacity-90">
+          <i class="fa-solid fa-right-to-bracket mr-2"></i>Sign in to dashboard
+        </button>
+        <p class="text-center text-[11px] text-gray-500">
+          <i class="fa-solid fa-shield-halved mr-1 text-nironBlue"></i
+          >Administrator access only
+        </p>
+      </form>
+    </main>
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>

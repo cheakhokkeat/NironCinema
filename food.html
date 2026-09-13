@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Food & drinks | NironCinema</title>
+    <link href="./src/dist/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+  </head>
+
+  <body
+    class="flex min-h-screen flex-col bg-nironDark pb-20 font-sans text-white antialiased md:pb-0">
+    <header
+      data-smart-header
+      class="sticky top-0 z-50 border-b border-nironBlue/15 bg-nironDark/80 shadow-[0_8px_30px_rgba(0,0,0,.15)] backdrop-blur-xl transition-transform duration-300 ease-out">
+      <div
+        class="mx-auto flex h-18 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <a href="./index.html" class="cinema-brand flex items-center gap-2"
+          ><span
+            class="flex size-8 items-center justify-center rounded bg-linear-to-tr from-nironBlue to-nironPink font-cyber text-xl font-bold text-black shadow-[0_0_15px_rgba(0,240,255,.4)]"
+            >N</span
+          ><span
+            class="font-cyber text-lg font-extrabold tracking-wider sm:text-xl"
+            >NIRON<span class="text-nironBlue">CINEMA</span></span
+          ></a
+        >
+        <a
+          href="./index.html"
+          aria-label="Back to home"
+          title="Back to home"
+          class="ml-auto flex size-10 shrink-0 items-center justify-center rounded-full border border-nironBlue text-nironBlue transition hover:bg-nironBlue hover:text-nironDark"
+          ><i class="fa-solid fa-house"></i
+        ></a>
+      </div>
+      <div
+        class="hidden border-t border-gray-800/80 md:flex md:justify-center md:py-2">
+        <nav
+          class="flex items-center gap-1 rounded-full border border-gray-800 bg-gray-900/60 p-1 text-xs font-semibold text-gray-400">
+          <a
+            href="./index.html"
+            class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"
+            ><i class="fa-solid fa-house mr-2"></i>Home</a
+          ><a
+            href="./index.html#movies"
+            class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"
+            ><i class="fa-solid fa-film mr-2"></i>Movies</a
+          ><a
+            href="./index.html#ads-container"
+            class="rounded-full px-4 py-2 transition hover:bg-nironPink/10 hover:text-nironPink"
+            ><i class="fa-solid fa-tags mr-2"></i>Offers</a
+          ><a
+            href="./locations.html"
+            class="rounded-full px-4 py-2 hover:text-nironBlue"
+            ><i class="fa-solid fa-location-dot mr-2"></i>Locations</a
+          ><a
+            href="./about.html"
+            class="rounded-full px-4 py-2 hover:text-nironBlue"
+            ><i class="fa-solid fa-circle-info mr-2"></i>About Us</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main
+      id="pageContent"
+      class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+      <div class="cinema-loading" role="status" aria-live="polite">
+        <div class="cinema-loading-logo" aria-hidden="true">N</div>
+        <strong>NIRON<span>CINEMA</span></strong>
+        <p>Getting your movie experience ready</p>
+        <div class="cinema-loading-track" aria-hidden="true"></div>
+        <div class="cinema-loading-skeleton" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="border-t border-gray-800 bg-gray-950/50 px-4 py-6 text-center text-xs text-gray-400">
+      &copy; 2026 NironCinema. All rights reserved.
+    </footer>
+    <nav
+      data-bottom-nav
+      aria-label="Mobile navigation"
+      class="fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-2xl border border-nironBlue/15 bg-nironDark/80 p-1.5 shadow-lg backdrop-blur-xl md:hidden">
+      <a
+        href="./index.html"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-house text-base" aria-hidden="true"></i>Home</a
+      ><a
+        href="./index.html#movies"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-film text-base" aria-hidden="true"></i>Movies</a
+      ><a
+        href="./index.html#ads-container"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-tags text-base" aria-hidden="true"></i>Offers</a
+      ><a
+        href="./locations.html"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-location-dot text-base" aria-hidden="true"></i
+        >Locations</a
+      ><a
+        href="./about.html"
+        class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"
+        ><i class="fa-solid fa-circle-info text-base" aria-hidden="true"></i
+        >About Us</a
+      >
+    </nav>
+    <script type="module" src="./src/js/auth/authModal.js"></script>
+    <script type="module" src="./src/js/pages/foodPage.js"></script>
+    <script type="module" src="./src/js/components/smartNavbar.js"></script>
+    <script type="module" src="./src/js/components/headerBrand.js"></script>
+  </body>
+</html>

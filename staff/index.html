@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Staff workspace | NironCinema</title>
+    <link rel="stylesheet" href="../src/dist/output.css" />
+    <link rel="stylesheet" href="../src/dist/mobileNav.css?v=2" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+  </head>
+
+  <body class="staff-app bg-nironDark text-white font-sans">
+    <div id="workspace" hidden>
+      <header class="staff-header">
+        <a href="../index.html" class="staff-brand"
+          ><span>N</span><strong>NIRON<b>CINEMA</b></strong></a
+        ><span class="staff-tag">STAFF WORKSPACE</span>
+        <div class="staff-account">
+          <a class="staff-home" href="../index.html"
+            ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
+          ><a class="staff-home" href="../index.html#movies"
+            ><i class="fa-solid fa-ticket" aria-hidden="true"></i> Book
+            tickets</a
+          >
+          <div id="adminWorkspaceLink" hidden>
+            <a class="staff-home" href="../admin/index.html">
+              <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+              Admin workspace
+            </a>
+          </div>
+          <button id="joinAuthBtn" aria-label="Edit profile">
+            <i class="fa-solid fa-user"></i>
+            <span id="staffName"></span></button
+          ><button id="logout" aria-label="Sign out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </header>
+      <main class="min-w-0">
+        <div class="staff-main">
+          <div class="staff-intro">
+            <div>
+              <p class="staff-eyebrow">BEHIND EVERY GREAT MOVIE NIGHT</p>
+              <h1 id="staffGreeting">Welcome to your shift.</h1>
+              <p>Find tickets, welcome guests, and keep the day moving.</p>
+            </div>
+            <div class="staff-cinema">
+              <label for="cinema">Cinema</label
+              ><select id="cinema" aria-label="Filter by cinema">
+                <option value="">All cinemas</option>
+              </select>
+            </div>
+          </div>
+          <nav class="staff-tabs" aria-label="Staff sections">
+            <button data-view="desk" aria-current="page">
+              <i class="fa-solid fa-ticket"></i> Ticket desk</button
+            ><button data-view="schedule">
+              <i class="fa-solid fa-calendar-day"></i> Screenings</button
+            ><button data-view="report">
+              <i class="fa-solid fa-chart-column"></i> Monthly report
+            </button>
+          </nav>
+          <section id="desk">
+            <section class="staff-shift" aria-labelledby="shiftTitle">
+              <div class="staff-section-heading">
+                <div>
+                  <h2 id="shiftTitle">My shift</h2>
+                  <p>Your activity today at the selected cinema.</p>
+                </div>
+                <span id="shiftDate" class="staff-eyebrow"></span>
+              </div>
+              <div
+                id="shiftSummary"
+                class="shift-summary"
+                aria-live="polite"></div>
+              <p class="staff-note">
+                Today's totals, not a clock-in session. Only actions recorded
+                under your account are included.
+              </p>
+            </section>
+            <div class="staff-section-heading">
+              <div>
+                <h2>Ticket desk</h2>
+                <p>Search by booking reference, guest name, email, or movie.</p>
+              </div>
+              <div class="report-period">
+                Screening date<input
+                  id="day"
+                  type="date"
+                  aria-label="Booking screening date" />
+              </div>
+            </div>
+            <div class="staff-filters">
+              <label class="staff-search"
+                ><i class="fa-solid fa-magnifying-glass"></i
+                ><input
+                  id="search"
+                  type="search"
+                  placeholder="Find a booking…"
+                  aria-label="Find a booking" /></label
+              ><select id="status" aria-label="Booking status">
+                <option value="">All statuses</option>
+                <option>Confirmed</option>
+                <option>Pending</option>
+                <option>Cancelled</option>
+                <option value="checked">Checked in</option>
+                <option value="awaiting-food">Awaiting pickup</option>
+                <option value="collected-food">Food collected</option>
+                <option value="cancellation">
+                  Cancellation requested
+                </option></select
+              ><button id="clear">Clear filters</button>
+            </div>
+            <p id="resultCount" aria-live="polite"></p>
+            <div id="bookings" class="staff-bookings"></div>
+            <div id="pages" class="staff-pagination"></div>
+            <details class="staff-activity staff-disclosure">
+              <summary>Activity history</summary>
+              <p class="staff-note">
+                Recent recorded actions at the selected cinema. Earlier actions
+                without timestamps are not reconstructed.
+              </p>
+              <div id="activityList"></div>
+              <div id="activityPages" class="staff-pagination"></div>
+            </details>
+          </section>
+          <section id="schedule" hidden>
+            <div class="staff-section-heading">
+              <div>
+                <h2>Screenings</h2>
+                <p>Today's halls, showtimes, and booked seats.</p>
+              </div>
+              <div class="report-period">
+                Date<input
+                  id="scheduleDay"
+                  type="date"
+                  aria-label="Screenings date" />
+              </div>
+            </div>
+            <div class="screening-filters">
+              <div>
+                <select id="screenMovie" aria-label="Movie">
+                  <option value="">All movies</option>
+                </select>
+              </div>
+              <div>
+                <select id="screenHall" aria-label="Hall">
+                  <option value="">All halls</option>
+                </select>
+              </div>
+              <div>
+                <select id="screenAvailability" aria-label="Booking status">
+                  <option value="">All status</option>
+                  <option value="open">Booking available</option>
+                  <option value="closed">Booking unavailable</option>
+                </select>
+              </div>
+              <button type="button" id="resetScreenFilters">
+                Clear filters
+              </button>
+            </div>
+            <p id="showCount" class="staff-note" aria-live="polite"></p>
+            <div id="shows" class="staff-bookings"></div>
+            <div id="showPages" class="staff-pagination"></div>
+          </section>
+          <section id="report" hidden>
+            <div class="staff-section-heading">
+              <div>
+                <h2>Monthly report</h2>
+                <p>
+                  Confirmed sales by booking date, including demo bookings.
+                  Cancelled and pending bookings are excluded.
+                </p>
+              </div>
+              <div class="report-period">
+                Report period<input
+                  id="month"
+                  type="month"
+                  aria-label="Report month" />
+              </div>
+            </div>
+            <div id="metrics" class="staff-metrics"></div>
+            <div class="staff-section-heading">
+              <div class="chart-switch" aria-label="Chart metric">
+                <button data-metric="food" aria-pressed="false">
+                  Food &amp; drinks</button
+                ><button data-metric="sales" aria-pressed="true">Sales</button
+                ><button data-metric="bookings" aria-pressed="false">
+                  Orders</button
+                ><button data-metric="seats" aria-pressed="false">Seats</button>
+              </div>
+              <div class="report-export">
+                <div class="report-paper-label">
+                  <label for="reportStyle">Paper style</label
+                  ><select id="reportStyle" aria-label="Paper style">
+                    <option value="modern">Modern Light</option>
+                    <option value="classic">Classic Light</option>
+                    <option value="dark">Full Color Dark</option>
+                  </select>
+                </div>
+                <button id="printReport">
+                  <i class="fa-solid fa-print" aria-hidden="true"></i>
+                  Print</button
+                ><button id="export">
+                  <i class="fa-solid fa-file-csv" aria-hidden="true"></i>
+                  CSV</button
+                ><button id="exportPdf">
+                  <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF
+                  report
+                </button>
+              </div>
+            </div>
+            <div id="daily" class="report-charts"></div>
+            <p class="staff-note">
+              Reports cover the selected cinema's bookings, not individual staff
+              sales. Check-ins record the staff member who handled them.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="staff-note staff-main">
+        NironCinema · Staff operations
+      </footer>
+    </div>
+    <script type="module" src="./staff.js"></script>
+  </body>
+</html>

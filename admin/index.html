@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin workspace | NironCinema</title>
+    <link rel="stylesheet" href="../src/dist/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+  </head>
+  <body class="staff-app bg-nironDark font-sans text-white">
+    <div id="adminApp" hidden>
+      <header
+        class="sticky top-0 z-40 flex min-h-20 flex-wrap items-center justify-between gap-3 border-b border-nironBlue/15 bg-nironDark/80 px-4 py-3 backdrop-blur-xl sm:px-6">
+        <div class="flex items-center gap-3">
+          <button
+            id="toggleNav"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-controls="adminNav"
+            aria-expanded="false"
+            class="flex size-11 items-center justify-center rounded-xl border border-nironBlue/20 text-nironBlue md:hidden">
+            <i class="fa-solid fa-bars"></i></button
+          ><a href="../index.html" class="flex items-center gap-2"
+            ><span
+              class="flex size-8 items-center justify-center rounded bg-linear-to-tr from-nironBlue to-nironPink font-cyber text-xl font-bold text-black"
+              >N</span
+            ><strong class="font-cyber text-sm sm:text-lg"
+              >NIRON<span class="text-nironBlue">CINEMA</span></strong
+            ></a
+          ><span class="hidden text-xs tracking-widest text-nironPink lg:block"
+            >ADMIN</span
+          >
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            href="../staff/index.html"
+            class="rounded-xl border border-nironBlue/20 px-3 py-2.5 text-xs text-nironBlue"
+            ><i class="fa-solid fa-id-badge mr-1"></i>Staff tools</a
+          ><button
+            id="joinAuthBtn"
+            aria-label="Edit profile"
+            class="flex min-h-11 items-center gap-2 rounded-xl border border-nironBlue/20 px-3 text-sm">
+            <i class="fa-solid fa-user text-nironBlue"></i
+            ><span
+              id="adminName"
+              class="hidden max-w-32 truncate sm:block"></span></button
+          ><button
+            id="logout"
+            aria-label="Sign out"
+            class="size-11 rounded-xl border border-nironBlue/20 text-gray-400">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </header>
+      <button
+        id="navBackdrop"
+        aria-label="Close navigation"
+        class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-sm md:hidden"></button>
+      <aside
+        id="adminNav"
+        class="fixed inset-y-0 left-0 z-50 w-60 -translate-x-full overflow-y-auto border-r border-nironBlue/15 bg-nironDark/95 p-3 backdrop-blur-xl transition-transform md:top-20 md:z-30 md:translate-x-0">
+        <div class="mb-4 flex items-center justify-between px-3 py-2">
+          <span class="text-xs tracking-widest text-nironPink"
+            >CONTROL CENTER</span
+          ><button
+            id="closeNav"
+            aria-label="Close navigation"
+            class="size-10 rounded-lg text-nironBlue md:hidden">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <nav id="navItems" aria-label="Admin sections" class="space-y-1"></nav>
+        <a
+          href="../index.html"
+          class="mt-6 flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm text-gray-400 hover:text-nironBlue"
+          ><i class="fa-solid fa-house"></i>Home</a
+        >
+      </aside>
+      <main class="min-w-0 md:ml-60">
+        <div class="staff-main">
+          <div class="mb-8">
+            <p class="text-xs tracking-[.18em] text-nironPink">
+              YOUR CINEMA, AT A GLANCE
+            </p>
+            <h1
+              id="adminGreeting"
+              class="mt-2 text-2xl font-bold sm:text-3xl"></h1>
+            <p class="mt-2 text-sm text-gray-400">
+              Manage the cinema and keep every movie night running smoothly.
+            </p>
+          </div>
+          <div id="adminContent"></div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>

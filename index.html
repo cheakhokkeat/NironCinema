@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NironCinema</title>
+    <!-- Tailwind CSS Output Link -->
+    <link href="./src/dist/output.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+
+        .font-cyber {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .glow-pink {
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+        }
+    </style>
+    <link rel="stylesheet" href="./src/dist/mobileNav.css?v=2">
+</head>
+
+<body class="bg-nironDark text-white font-sans antialiased min-h-screen flex flex-col pb-20 md:pb-0">
+    <!-- HEADER SECTION-->
+    <header data-smart-header
+        class="sticky top-0 z-50 border-b border-nironBlue/15 bg-nironDark/80 shadow-[0_8px_30px_rgba(0,0,0,.15)] backdrop-blur-xl transition-transform duration-300 ease-out">
+        <div class="cinema-header-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-3">
+            <!-- Logo & Desktop Nav -->
+            <div class="flex items-center gap-8">
+                <!-- Brand Logo -->
+                <a href="./index.html" class="cinema-brand flex items-center gap-2"><span
+          class="flex size-8 items-center justify-center rounded bg-linear-to-tr from-nironBlue to-nironPink font-cyber text-xl font-bold text-black shadow-[0_0_15px_rgba(0,240,255,.4)]">N</span><span
+          class="font-cyber text-lg font-extrabold tracking-wider sm:text-xl">NIRON<span
+            class="text-nironBlue">CINEMA</span></span></a>
+            </div>
+
+            <!-- Search Area (Visible on tablet and desktop) -->
+            <div class="cinema-header-search hidden sm:flex min-w-0 mx-auto">
+                <div class="relative w-full">
+                    <input id="desktopMovieSearch" data-movie-search type="search"
+                        aria-label="Search movies by title or genre" placeholder="Search movies or genre"
+                        class="w-full rounded-full border border-gray-700 bg-gray-900/70 py-2.5 pl-10 pr-4 text-sm text-white outline-none focus:border-nironBlue focus:ring-2 focus:ring-nironBlue/10 transition">
+                    <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xs text-gray-500"
+                        aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <!-- Action Buttons & Icons -->
+            <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+                <button aria-label="Notifications"
+                    class="p-1.5 sm:p-2 relative text-gray-300 hover:text-white hover:bg-nironBlue/20 rounded-full transition duration-300">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-nironPink rounded-full"></span>
+                </button>
+                <button id="openTicketsBtn">
+                    <a href="#"
+                        class="hidden md:inline-flex items-center text-xs sm:text-sm font-semibold border border-nironBlue text-nironBlue px-3 py-2 rounded-full hover:bg-nironBlue hover:text-nironDark transition duration-300">
+                        <i class="fa-solid fa-ticket mr-2"></i>Tickets
+                    </a>
+                </button>
+
+                <!-- Signup and Login or Join now wrapper -->
+                <div class="relative inline-block text-left">
+                    <!-- Reduced max-width (max-w-[95px]) and compact padding (px-2.5 py-1) on mobile -->
+                    <button id="joinAuthBtn"
+                        class="max-w-23.75 sm:max-w-none truncate inline-flex items-center text-xs sm:text-sm font-semibold bg-nironPink text-white px-2.5 sm:px-4 py-1 sm:py-2 rounded-full hover:opacity-90 shadow-[0_0_10px_rgba(255,0,127,0.4)] transition">
+                        <i class="fa-solid fa-user shrink-0 text-xs"></i> <span
+                            class="hidden sm:inline ml-1 truncate">Join Now</span><span
+                            class="sm:hidden ml-1 truncate">Join</span>
+                    </button>
+
+                    <!-- Profile Dropdown Menu -->
+                    <div id="userDropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-gray-900 border border-nironBlue/40 rounded-xl shadow-xl py-2 z-50 text-sm">
+                        <a href="#" id="profileOption"
+                            class="block px-4 py-2 text-gray-300 hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-user-gear mr-2 text-nironBlue"></i> Profile
+                        </a>
+                        <a href="./admin/index.html" id="adminDashboardOption"
+                            class="hidden block px-4 py-2 text-gray-300 hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-chart-line mr-2 text-nironPink"></i> Admin Dashboard
+                        </a>
+                        <a href="#" id="signoutBtn"
+                            class="block px-4 py-2 text-gray-300 hover:bg-red-500/20 hover:text-red-400 transition">
+                            <i class="fa-solid fa-right-from-bracket mr-2"></i> Sign Out
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="relative inline-block text-left md:hidden">
+                    <button id="mobile-menu-button" aria-label="Open Menu"
+                        class="p-1.5 text-gray-300 hover:text-white focus:outline-none shrink-0">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                    <div id="mobileMenu"
+                        class="hidden absolute right-0 mt-2 w-48 bg-nironDark/80 backdrop-blur-xl border border-nironBlue/15 rounded-xl shadow-xl py-2 z-50 text-sm">
+                        <a href="./index.html" id="mobileHomeLink"
+                            class="mobileMenu-selected block px-4 py-2 text-nironBlue bg-nironBlue/10 hover:bg-nironBlue/20 transition">
+                            <i class="fa-solid fa-house mr-2 text-nironBlue"></i> Home
+                        </a>
+                        <a href="#" id="mobileTicketsLink"
+                            class="mobileMenu-selected myTickets block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-ticket mr-2 text-nironBlue" aria-hidden="true"></i> My Tickets
+                        </a>
+                        <a href="?category=new#movies" id="mobileMoviesLink" data-movie-filter="new"
+                            class="mobileMenu-selected block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-film mr-2 text-nironBlue"></i> New Movies
+                        </a>
+                        <a href="?category=now-showing#movies" id="mobileNowShowingLink" data-movie-filter="now-showing"
+                            class="mobileMenu-selected block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-clapperboard mr-2 text-nironBlue"></i> Now Showing
+                        </a>
+                        <a href="?category=upcoming#movies" id="mobileUpcomingLink" data-movie-filter="upcoming"
+                            class="mobileMenu-selected block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-calendar-days mr-2 text-nironBlue"></i> Upcoming
+                        </a>
+                        <a href="./locations.html" id="locationNavLink"
+                            class="mobileMenu-selected block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-location-dot mr-2 text-nironBlue"></i> Location
+                        </a>
+                        <a href="./about.html" id="mobileAboutLink"
+                            class="mobileMenu-selected block px-4 py-2 text-white hover:bg-nironBlue/20 hover:text-white transition">
+                            <i class="fa-solid fa-circle-info mr-2 text-nironBlue"></i> About Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Nav Bar -->
+        <div class="hidden border-t border-gray-800/80 md:flex md:justify-center md:py-2">
+            <nav
+                class="flex items-center gap-1 rounded-full border border-gray-800 bg-gray-900/60 p-1 text-xs font-semibold text-gray-400">
+                <a href="./index.html"
+                    class="nav-active rounded-full bg-nironBlue/15 px-4 py-2 text-nironBlue transition hover:bg-nironBlue/20 hover:text-nironBlue"><i
+                        class="fa-solid fa-house mr-2"></i>Home</a>
+                <a href="#movies"
+                    class="nav-active rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"><i
+                        class="fa-solid fa-film mr-2"></i>Movies</a>
+                <a href="#ads-container"
+                    class="nav-active rounded-full px-4 py-2 transition hover:bg-nironPink/10 hover:text-nironPink"><i
+                        class="fa-solid fa-tags mr-2"></i>Offers</a>
+                <a href="./locations.html"
+                    class="nav-active rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"><i
+                        class="fa-solid fa-location-dot mr-2"></i>Locations</a>
+                <a href="./about.html"
+                    class="rounded-full px-4 py-2 transition hover:bg-nironBlue/10 hover:text-nironBlue"><i
+                        class="fa-solid fa-circle-info mr-2"></i>About Us</a>
+            </nav>
+        </div>
+
+    </header>
+    <!-- END OF HEADER SECTION -->
+
+    <!-- MAIN CONTENT SECTION -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+        <!-- Custom Sign out Confirmation Modal -->
+        <div id="signoutModal"
+            class="hidden fixed inset-0 z-50 flex items-center justify-center bg-nironDark/40 backdrop-blur-sm h-full">
+            <div class="bg-nironDark/80 border border-nironBlue rounded-2xl shadow-2xl p-6 w-80 text-center space-y-4">
+                <div class="text-nironPink text-3xl">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">Sign Out</h3>
+                <p class="text-sm text-gray-300">Are you sure you want to sign out of Niron Cinema?</p>
+
+                <div class="flex space-x-3 pt-2">
+                    <button id="cancelSignout"
+                        class="flex-1 bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium py-2 rounded-xl transition">
+                        Cancel
+                    </button>
+                    <button id="confirmSignout"
+                        class="flex-1 bg-red-600 hover:bg-red-500 text-white font-medium py-2 rounded-xl transition">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Overlay (Layer) -->
+        <!-- Note: 'hidden' overrides 'flex' by default. Removing 'hidden' reveals the flex layer. -->
+        <div id="authModal" class="fixed h-full inset-0 bg-black/50 items-center justify-center z-50 flex hidden">
+            <!-- Modal Card -->
+            <div class="bg-nironDark/80 p-8 rounded-xl shadow-2xl w-80 md:w-180 border border-nironBlue relative">
+                <!-- Close Button -->
+                <button id="closeBtn"
+                    class="absolute px-2 top-3 right-5 text-nironPink/90 hover:text-nironBlue hover:cursor-pointer text-2xl font-bold transform duration-300">&times;</button>
+                <div class="flex justify-center gap-3 md:gap-10">
+                    <h2 id="signupTab"
+                        class="auth-selected text-2xl font-bold mb-6 text-white-800 text-center hover:cursor-pointer hover:text-nironBlue/90 transform duration-300 text-nironBlue">
+                        Sign Up</h2>
+                    <p class="text-2xl text-nironBlue/90">|</p>
+                    <h2 id="signinTab"
+                        class="auth-selected text-2xl font-bold mb-6 text-white-800 text-center hover:cursor-pointer hover:text-nironBlue/90 transform duration-300">
+                        Sign In</h2>
+                </div>
+                <!-- Signup Form -->
+                <form class="" id="signupForm">
+                    <p class="text-white-800 text-[16px] text-center mb-2">Join us and booking your favorite movies.</p>
+                    <!-- Row1 -->
+                    <div class="md:flex md:justify-between md:gap-6">
+                        <div class="input-group w-full mb-3">
+                            <label for="fullName" class="text-sm font-medium text-white mb-1">Full Name</label>
+                            <input type="text" required id="fullName"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                        </div>
+                        <div class="input-group w-full mb-3">
+                            <label for="signupEmail" class="text-sm font-medium text-white mb-1">Email</label>
+                            <input type="email" required id="signupEmail"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                        </div>
+                    </div>
+                    <!-- Row2 -->
+                    <div class="md:flex md:justify-between md:gap-6">
+                        <div class="input-group w-full mb-3">
+                            <label for="signupPassword"
+                                class="block text-sm font-medium text-white mb-1">Password</label>
+                            <input type="password" id="signupPassword" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                        </div>
+                        <div class="input-group w-full mb-3">
+                            <label for="repeatPassword" class="block text-sm font-medium text-white mb-1">Repeat
+                                Password</label>
+                            <input type="password" id="repeatPassword" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                        </div>
+                    </div>
+                    <!-- Terms Checkbox -->
+                    <div class="flex gap-2 mb-3">
+                        <input type="checkbox" id="terms" required class="cursor-pointer" />
+                        <label for="terms" class="terms text-[13px] md:text-[16px]">I agree to the <a href="#"
+                                class="text-nironBlue/90 hover:underline">Terms & Conditions</a></label>
+                    </div>
+
+                    <button type="submit" class="mb-3 w-full bg-nironBlue/90 hover:bg-nironBlue/80 text-nironDark font-medium py-2 rounded-lg transition
+                        bg-linear-to-r from-nironBlue to-blue-600
+                         hover:opacity-90 hover:text-white
+                        ">
+                        Continue
+                    </button>
+                </form>
+                <!-- Signin Form -->
+                <form class="hidden" id="signinForm">
+                    <p class="text-white-800 text-[16px] text-center mb-2">Welcome back customer !</p>
+                    <!-- Row1 -->
+                    <div class="input-group w-full mb-3">
+                        <label for="signinEmail" class="text-sm font-medium text-white mb-1">Email</label>
+                        <input type="text" required id="signinEmail"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                    </div>
+
+                    <!-- Row2 -->
+                    <div class="input-group w-full mb-6">
+                        <label for="signinPassword" class="block text-sm font-medium text-white mb-1">Password</label>
+                        <input type="password" id="signinPassword" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-nironBlue/80">
+                    </div>
+                    <!-- Remember Checkbox -->
+                    <div class="flex gap-2 mb-3">
+                        <input type="checkbox" id="remember" class="cursor-pointer" />
+                        <label for="remember" class="terms text-[13px] md:text-[16px]">Remember me</label>
+                    </div>
+
+                    <button type="submit" class="mb-3 w-full bg-nironBlue/90 hover:bg-nironBlue/80 text-nironDark font-medium py-2 rounded-lg transition
+                        bg-linear-to-r from-nironBlue to-blue-600
+                         hover:opacity-90 hover:text-white
+                        ">
+                        Continue
+                    </button>
+
+                    <div class="flex justify-end">
+                        <a href="#" class="text-[13px] md:text-[16px] text-nironBlue/90 hover:underline">
+                            Forgot password
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End of auth modal -->
+
+        </div>
+
+        <!-- Admin-managed advertisements -->
+        <section id="ads-container" class="scroll-mt-36 space-y-4"></section>
+
+        <!-- Movie Cards Section -->
+        <section id="movies" class="scroll-mt-36">
+            <div class="movie-browser-heading">
+                <div>
+                    <p class="text-[10px] font-semibold uppercase tracking-[.2em] text-nironPink sm:text-xs">Find your
+                        next story</p>
+                    <h2 class="mt-2 font-cyber text-xl font-bold sm:text-2xl">Explore movies</h2>
+                </div>
+                <span id="movieCount" role="status" class="movie-count"></span>
+            </div>
+            <div class="movie-filter-bar" role="group" aria-label="Filter movies">
+                <button type="button" data-movie-filter="now-showing" aria-controls="movie-container"
+                    aria-pressed="false" class="movie-filter"><i class="fa-solid fa-clapperboard"
+                        aria-hidden="true"></i><span>Now Showing</span></button>
+                <button type="button" data-movie-filter="upcoming" aria-controls="movie-container" aria-pressed="false"
+                    class="movie-filter"><i class="fa-solid fa-calendar-days"
+                        aria-hidden="true"></i><span>Upcoming</span></button>
+                <button type="button" data-movie-filter="new" aria-controls="movie-container" aria-pressed="false"
+                    class="movie-filter"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span>New
+                        Movies</span></button>
+                <button type="button" data-movie-filter="all" aria-controls="movie-container" aria-pressed="false"
+                    class="movie-filter"><i class="fa-solid fa-border-all" aria-hidden="true"></i><span>View
+                        All</span></button>
+            </div>
+            <div id="showingDateFilter" class="movie-period-filter">
+                <p class="mb-3 text-xs text-gray-400">Choose a day</p>
+                <input id="showingDate" type="hidden" value="">
+                <div id="showingDateCards" class="movie-period-row" role="group" aria-label="Filter showtimes by day">
+                </div>
+            </div>
+            <div id="upcomingMonthFilter" class="movie-period-filter hidden">
+                <p class="mb-3 text-xs text-gray-400">Choose a release month</p>
+                <input id="upcomingMonth" type="hidden" value="">
+                <div id="upcomingMonthCards" class="movie-period-row" role="group"
+                    aria-label="Filter releases by month"></div>
+            </div>
+            <div id="movieEmpty"
+                class="hidden rounded-2xl border border-nironBlue/20 bg-gray-900/40 px-6 py-12 text-center">
+                <i class="fa-solid fa-film text-3xl text-nironBlue" aria-hidden="true"></i>
+                <h2 class="mt-4 font-cyber text-lg font-bold">No matching movies</h2>
+                <p class="mt-2 text-sm text-gray-400">Try another title, genre, date, or category.</p>
+                <button type="button" data-movie-filter="all"
+                    class="mt-5 rounded-full border border-nironBlue/50 px-5 py-2 text-sm text-nironBlue hover:bg-nironBlue/10">View
+                    all movies</button>
+            </div>
+
+            <!-- Movie Cards Grid Example (Responsive: 2 cols mobile, 3 cols tablet, 4 cols desktop) -->
+            <div id="movie-container" class="grid gap-3 md:gap-6 grid-cols-2  sm:grid-cols-3 lg:grid-cols-4">
+                <!-- Movie Card Will Show Here -->
+            </div>
+            <nav id="moviePagination" class="movie-pagination hidden" aria-label="Movie pages"></nav>
+        </section>
+
+
+
+    </main>
+    <!-- END OF MAIN CONTENT SECTION-->
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-gray-950 border-t border-gray-800 text-gray-400 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Footer Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-gray-800/60">
+
+                <!-- Column 1: Company Links -->
+                <div class="space-y-4">
+                    <h3 class="text-white font-bold text-base font-cyber tracking-wider">Company</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="./about.html" class="hover:text-nironBlue transition duration-300">About Us</a>
+                        </li>
+                        <li><a href="#" class="hover:text-nironBlue transition duration-300">Contact Us</a></li>
+                        <li><a href="./locations.html" class="hover:text-nironBlue transition duration-300">Cinemas</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: More Links -->
+                <div class="space-y-4">
+                    <h3 class="text-white font-bold text-base font-cyber tracking-wider">More</h3>
+                    <ul class="space-y-2.5 text-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
+                        <li><a href="#" class="hover:text-nironBlue transition duration-300">Promotions</a></li>
+                        <li><a href="#" class="hover:text-nironBlue transition duration-300">News & Activity</a></li>
+                        <li><a href="./tickets.html" data-tickets-link
+                                class="hover:text-nironBlue transition duration-300">My Ticket</a></li>
+                        <li><a href="#" class="hover:text-nironBlue transition duration-300">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-nironBlue transition duration-300">Privacy & Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: App Download & Social Media -->
+                <div class="space-y-6">
+                    <!-- Download App -->
+                    <div class="space-y-3">
+                        <h3 class="text-white font-bold text-base font-cyber tracking-wider">Download Our App</h3>
+                        <div class="flex items-center gap-3">
+                            <!-- Play Store Icon Placeholder / Link -->
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue transition duration-300 text-white">
+                                <span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                        <path
+                                            d="M4.41958 21.8627L14.3235 11.4768L4.42789 1.10938C4.16359 1.27077 4 1.64448 4 2.13368V20.8484C4.00352 21.3376 4.1612 21.684 4.41958 21.8627Z"
+                                            fill="#4285F4"></path>
+                                        <path
+                                            d="M14.675 11.1911L17.6251 8.09703L5.61144 1.1887C5.40916 1.0655 5.17936 1.00034 4.94531 1L14.6738 11.1898L14.675 11.1911Z"
+                                            fill="#34A853"></path>
+                                        <path
+                                            d="M14.6733 11.7656L4.91406 22.0001C5.15902 22.0044 5.40025 21.9374 5.61097 21.8065L17.6483 14.8796L14.6733 11.7656Z"
+                                            fill="#EA4335"></path>
+                                        <path
+                                            d="M21.9816 10.6001L17.9838 8.29688L14.9531 11.4754L18.0063 14.6738L21.9804 12.3768C22.8255 11.8889 22.8255 11.0855 21.9816 10.6001Z"
+                                            fill="#FBBC04"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                            <!-- App Store Icon Placeholder / Link -->
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue transition duration-300 text-white">
+                                <span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                        <path
+                                            d="M18.5843 12.7629C18.5565 9.73087 21.1088 8.2558 21.2255 8.18714C19.7801 6.11466 17.5397 5.83149 16.7523 5.80891C14.8706 5.61419 13.0454 6.91619 12.0869 6.91619C11.1092 6.91619 9.63307 5.82772 8.04217 5.8597C5.99501 5.89075 4.07983 7.05635 3.02945 8.86631C0.861689 12.5569 2.4784 17.9803 4.55525 20.9634C5.59417 22.4244 6.80813 24.0556 8.39712 23.9983C9.95162 23.9353 10.5323 23.0236 12.4082 23.0236C14.267 23.0236 14.8123 23.9983 16.4328 23.9616C18.1012 23.9353 19.1516 22.494 20.1541 21.0199C21.3547 19.3453 21.8368 17.6962 21.856 17.6115C21.8167 17.5983 18.6158 16.397 18.5843 12.7629Z"
+                                            fill="white"></path>
+                                        <path
+                                            d="M15.523 3.84674C16.3591 2.81851 16.9312 1.41959 16.7724 0C15.5623 0.052701 14.0488 0.823174 13.1774 1.82882C12.4063 2.71503 11.7176 4.16752 11.8955 5.53348C13.2549 5.63319 14.6506 4.85894 15.523 3.84674Z"
+                                            fill="white"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Follow Social Media -->
+                    <div class="space-y-3">
+                        <h3 class="text-white font-bold text-base font-cyber tracking-wider">Follow Our Social Media
+                        </h3>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue hover:text-nironBlue transition duration-300 text-xs">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                    <path
+                                        d="M23 12.0276C23 5.94035 18.072 1 12 1C5.928 1 1 5.94035 1 12.0276C1 17.3649 4.784 21.809 9.8 22.8346V15.3358H7.6V12.0276H9.8V9.27068C9.8 7.14236 11.527 5.41103 13.65 5.41103H16.4V8.7193H14.2C13.595 8.7193 13.1 9.21554 13.1 9.82205V12.0276H16.4V15.3358H13.1V23C18.655 22.4486 23 17.7509 23 12.0276Z"
+                                        fill="white"></path>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue hover:text-nironBlue transition duration-300 text-xs">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                    <path
+                                        d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z"
+                                        fill="white"></path>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue hover:text-nironBlue transition duration-300 text-xs">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                    <path
+                                        d="M12.0765 3H12.21C13.443 3.0045 19.6905 3.0495 21.375 3.5025C21.8842 3.64075 22.3483 3.91023 22.7207 4.28401C23.0932 4.65779 23.361 5.12278 23.4975 5.6325C23.649 6.2025 23.7555 6.957 23.8275 7.7355L23.8425 7.8915L23.8755 8.2815L23.8875 8.4375C23.985 9.8085 23.997 11.0925 23.9985 11.373V11.4855C23.997 11.7765 23.9835 13.1475 23.8755 14.5755L23.8635 14.733L23.85 14.889C23.775 15.747 23.664 16.599 23.4975 17.226C23.3615 17.7359 23.0938 18.2011 22.7212 18.575C22.3487 18.9488 21.8844 19.2182 21.375 19.356C19.635 19.824 13.0215 19.857 12.105 19.8585H11.892C11.4285 19.8585 9.5115 19.8495 7.5015 19.7805L7.2465 19.7715L7.116 19.7655L6.8595 19.755L6.603 19.7445C4.938 19.671 3.3525 19.5525 2.622 19.3545C2.11273 19.2168 1.6486 18.9477 1.27609 18.5741C0.903575 18.2005 0.63577 17.7357 0.4995 17.226C0.333 16.6005 0.222 15.747 0.147 14.889L0.135 14.7315L0.123 14.5755C0.0489714 13.5591 0.0079498 12.5406 0 11.5215L0 11.337C0.003 11.0145 0.015 9.9 0.096 8.67L0.1065 8.5155L0.111 8.4375L0.123 8.2815L0.156 7.8915L0.171 7.7355C0.243 6.957 0.3495 6.201 0.501 5.6325C0.63704 5.12257 0.904743 4.65737 1.27727 4.28352C1.6498 3.90968 2.11405 3.64034 2.6235 3.5025C3.354 3.3075 4.9395 3.1875 6.6045 3.1125L6.8595 3.102L7.1175 3.093L7.2465 3.0885L7.503 3.078C8.93056 3.03206 10.3587 3.00656 11.787 3.0015H12.0765V3ZM9.6 7.815V15.042L15.8355 11.43L9.6 7.815Z"
+                                        fill="white"></path>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue hover:text-nironBlue transition duration-300 text-xs">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                    <path
+                                        d="M19.3233 5.56219C19.1715 5.4837 19.0236 5.39765 18.8804 5.30438C18.4638 5.02896 18.0818 4.70445 17.7427 4.33781C16.8943 3.36703 16.5774 2.38219 16.4607 1.69266H16.4654C16.3679 1.12031 16.4082 0.75 16.4143 0.75H12.5499V15.6928C12.5499 15.8934 12.5499 16.0917 12.5415 16.2877C12.5415 16.312 12.5391 16.3345 12.5377 16.3608C12.5377 16.3716 12.5377 16.3828 12.5354 16.3941V16.4025C12.4946 16.9386 12.3228 17.4566 12.0349 17.9107C11.747 18.3648 11.3519 18.7413 10.8844 19.0069C10.3972 19.2841 9.8461 19.4295 9.28552 19.4288C7.48505 19.4288 6.02583 17.9606 6.02583 16.1475C6.02583 14.3344 7.48505 12.8663 9.28552 12.8663C9.62634 12.8659 9.96506 12.9196 10.2891 13.0252L10.2938 9.09047C9.31007 8.9634 8.31067 9.04158 7.35866 9.32008C6.40666 9.59858 5.5227 10.0714 4.76255 10.7086C4.09649 11.2873 3.53653 11.9778 3.10786 12.7491C2.94474 13.0303 2.32927 14.1605 2.25474 15.9947C2.20786 17.0358 2.52052 18.1144 2.66958 18.5602V18.5695C2.76333 18.832 3.12661 19.7278 3.71865 20.483C4.19604 21.0887 4.76006 21.6208 5.39255 22.0622V22.0528L5.40193 22.0622C7.27271 23.3334 9.34693 23.25 9.34693 23.25C9.70599 23.2355 10.9088 23.25 12.2747 22.6027C13.7897 21.885 14.6522 20.8158 14.6522 20.8158C15.2032 20.1769 15.6414 19.4488 15.9479 18.6628C16.2976 17.7436 16.4143 16.6411 16.4143 16.2005V8.27297C16.4611 8.30109 17.0855 8.71406 17.0855 8.71406C17.0855 8.71406 17.9851 9.29063 19.3885 9.66609C20.3954 9.93328 21.7519 9.98953 21.7519 9.98953V6.15328C21.2766 6.20484 20.3115 6.05484 19.3233 5.56219Z"
+                                        fill="white"></path>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:border-nironBlue hover:text-nironBlue transition duration-300 text-xs">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 lg:h-6 lg:w-6">
+                                    <path
+                                        d="M11.944 3.26667e-05C8.77112 0.0148396 5.73324 1.28566 3.4949 3.53449C1.25656 5.78332 -3.4549e-05 8.82711 7.12435e-10 12C7.12441e-10 15.1826 1.26428 18.2349 3.51472 20.4853C5.76515 22.7358 8.8174 24 12 24C15.1826 24 18.2348 22.7358 20.4853 20.4853C22.7357 18.2349 24 15.1826 24 12C24 8.81743 22.7357 5.76519 20.4853 3.51475C18.2348 1.26431 15.1826 3.26667e-05 12 3.26667e-05C11.9813 -1.08889e-05 11.9627 -1.08889e-05 11.944 3.26667e-05ZM16.906 7.22403C17.006 7.22203 17.227 7.24703 17.371 7.36403C17.4667 7.44713 17.5277 7.56311 17.542 7.68903C17.558 7.78203 17.578 7.99503 17.562 8.16103C17.382 10.059 16.6 14.663 16.202 16.788C16.034 17.688 15.703 17.989 15.382 18.018C14.686 18.083 14.157 17.558 13.482 17.116C12.426 16.423 11.829 15.992 10.804 15.316C9.619 14.536 10.387 14.106 11.062 13.406C11.239 13.222 14.309 10.429 14.369 10.176C14.376 10.144 14.383 10.026 14.313 9.96403C14.243 9.90203 14.139 9.92303 14.064 9.94003C13.958 9.96403 12.271 11.08 9.003 13.285C8.523 13.615 8.09 13.775 7.701 13.765C7.273 13.757 6.449 13.524 5.836 13.325C5.084 13.08 4.487 12.951 4.539 12.536C4.566 12.32 4.864 12.099 5.432 11.873C8.93 10.349 11.262 9.34403 12.43 8.85903C15.762 7.47303 16.455 7.23203 16.906 7.22403Z"
+                                        fill="white"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Middle Section: Payment Methods -->
+            <div class="py-8 border-b border-gray-800/60 space-y-4">
+                <h3 class="text-white font-bold text-base font-cyber tracking-wider">Payment</h3>
+                <div class="flex flex-wrap items-center gap-6">
+                    <img src="https://legend.com.kh/aba-payway-logo.png" alt="ABA PayWay" class="h-8 object-contain">
+                    <img src="https://legend.com.kh/visa-logo.png" alt="Visa" class="h-6 object-contain">
+                    <img src="https://legend.com.kh/mastercard-logo.png" alt="Mastercard" class="h-6 object-contain">
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Section -->
+            <div class="pt-6 text-center text-xs text-gray-500">
+                <p>© 2026 Niron Cinemas. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER SECTION -->
+
+    <div id="mobileSearchPanel"
+        class="hidden fixed inset-x-3 bottom-24 z-40 rounded-2xl border border-nironBlue/50 bg-nironDark/80 p-2 shadow-[0_0_20px_rgba(0,240,255,0.12)] backdrop-blur-xl md:hidden">
+        <div class="relative w-full">
+            <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-nironBlue"
+                aria-hidden="true"></i>
+            <input data-movie-search id="mobileSearchInput" type="search" aria-label="Search movies or genre"
+                placeholder="Search movies or genre"
+                class="w-full rounded-xl border border-nironBlue/60 bg-nironBlue/5 py-2 pl-10 pr-12 text-base text-white placeholder:text-gray-400 focus:outline-none focus:border-nironBlue/60 focus:ring-2 focus:ring-nironBlue/10 transition">
+            <button id="mobileSearchClose" type="button" aria-label="Close search"
+                class="absolute right-0 top-0 h-full rounded-r-xl px-4 text-nironPink/90 hover:bg-nironBlue/10 hover:text-nironBlue transition">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <nav data-bottom-nav aria-label="Mobile navigation"
+        class="fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-2xl border border-nironBlue/15 bg-nironDark/80 p-1.5 shadow-lg backdrop-blur-xl md:hidden">
+        <a href="./index.html"
+            class="flex flex-col items-center gap-1 rounded-xl bg-nironBlue/15 py-2 text-[10px] font-semibold text-nironBlue"><i
+                class="fa-solid fa-house text-base"></i>Home</a>
+        <a href="#movies"
+            class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"><i
+                class="fa-solid fa-film text-base"></i>Movies</a>
+        <a href="#ads-container"
+            class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironPink"><i
+                class="fa-solid fa-tags text-base"></i>Offers</a>
+        <a href="./locations.html"
+            class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue"><i
+                class="fa-solid fa-location-dot text-base"></i>Locations</a>
+        <button id="mobileSearchToggle" type="button" aria-controls="mobileSearchPanel" aria-expanded="false"
+            class="flex flex-col items-center gap-1 rounded-xl py-2 text-[10px] text-gray-400 hover:text-nironBlue aria-expanded:bg-nironBlue/15 aria-expanded:text-nironBlue">
+            <i class="fa-solid fa-magnifying-glass text-base" aria-hidden="true"></i>Search
+        </button>
+    </nav>
+
+    <!-- SCRIPTS -->
+    <!-- Data Initialization & Storage Layer -->
+    <script type="module" src="./src/js/data/storage.js"></script>
+
+    <!-- Feature & Domain Modules -->
+    <script type="module" src="./src/js/auth/authModal.js"></script>
+
+    <!-- Main Controller (Loads last to tie everything together) -->
+    <script type="module" src="./src/js/pages/main.js"></script>
+    <script type="module" src="./src/js/components/smartNavbar.js"></script>
+<script type="module" src="./src/js/components/headerBrand.js"></script>
+</body>
+
+</html>

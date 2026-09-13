@@ -1,0 +1,103 @@
+const yesNo = ["Yes", "No"];
+export const schemas = {
+  movies: {
+    label: "Movies",
+    icon: "fa-film",
+    fields: [
+      ["title", "Title"],
+      ["genre", "Genres (separate with ;)"],
+      ["duration", "Duration"],
+      ["release", "Release date", "date"],
+      [
+        "classification",
+        "Age classification",
+        "select",
+        ["G", "PG", "NC15", "18+"],
+      ],
+      ["type", "Ticket type", "select", ["Standard", "Advance"]],
+      ["poster", "Poster URL", "image"],
+      ["synopsis", "Synopsis", "textarea"],
+      ["director", "Director"],
+      ["cast", "Cast (separate with commas)"],
+      ["language", "Language"],
+      ["country", "Country"],
+    ],
+  },
+  showtimes: {
+    label: "Screenings",
+    icon: "fa-calendar-days",
+    fields: [
+      ["movieId", "Movie", "relation", "movies"],
+      ["locationId", "Cinema", "relation", "locations"],
+      ["hall", "Hall"],
+      ["date", "Screening date", "date"],
+      ["time", "Time", "time"],
+      ["format", "Format", "select", ["2D", "3D", "4DX", "IMAX"]],
+      [
+        "audioLanguage",
+        "Audio language",
+        "select",
+        ["KH", "EN", "KR", "JP", "ZH", "HI"],
+      ],
+      [
+        "subtitleLanguage",
+        "Subtitles",
+        "select",
+        ["None", "KH", "EN", "KR", "JP", "ZH"],
+      ],
+      [
+        "sound",
+        "Sound",
+        "select",
+        ["Standard", "Dolby 5.1", "Dolby 7.1", "Dolby Atmos", "IMAX Sound"],
+      ],
+      ["price", "Seat price (USD)", "number"],
+    ],
+  },
+  locations: {
+    label: "Cinemas",
+    icon: "fa-location-dot",
+    fields: [
+      ["name", "Name"],
+      ["address", "Address"],
+      ["image", "Cinema image URL", "image"],
+      ["phone", "Phone"],
+      ["hours", "Opening hours"],
+      ["mapUrl", "Map URL"],
+      ["active", "Active", "select", yesNo],
+    ],
+  },
+  foods: {
+    label: "Food & drinks",
+    icon: "fa-utensils",
+    fields: [
+      ["name", "Name"],
+      ["description", "Description", "textarea"],
+      ["price", "Price (USD)", "number"],
+      ["image", "Image URL", "image"],
+    ],
+  },
+  ads: {
+    label: "Advertisements",
+    icon: "fa-bullhorn",
+    fields: [
+      ["title", "Title"],
+      ["subtitle", "Subtitle"],
+      ["label", "Badge text"],
+      ["image", "Image URL", "image"],
+      ["link", "Link (https URL or #movies)"],
+      ["active", "Active", "select", yesNo],
+    ],
+  },
+  users: {
+    label: "Accounts",
+    icon: "fa-users",
+    fields: [
+      ["name", "Name"],
+      ["username", "Username"],
+      ["email", "Email", "email"],
+      ["role", "Role", "select", ["user", "staff", "admin"]],
+      ["password", "Password", "password"],
+    ],
+  },
+};
